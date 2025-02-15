@@ -12,8 +12,8 @@
 
 /* Estilos generales */
 :root {
-    --primary-red: #FF1E00; /* Rojo Fórmula 1 */
-    --carbon-black: #15151E; /* Negro Fórmula 1 */
+    --primary-red: #FF1E00;
+    --carbon-black: #15151E;
     --white: #FFFFFF;
     --gray: #888888;
 }
@@ -84,15 +84,7 @@ nav ul li a:hover::before {
     opacity: 1;
 }
 
-/* Hero Section */
-/* .hero {
-    background-image: url("/img/index.webp");
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    padding: 100px 20px;
-    position: relative;
-} */
+/* Hero */
 .hero {
     background-image: url("/img/index.webp");
     background-size: cover;
@@ -100,7 +92,7 @@ nav ul li a:hover::before {
     text-align: center;
     padding: 100px 20px;
     position: relative;
-    min-height: calc(100vh - 140px); /* 100vh - altura del header y footer */
+    min-height: calc(100vh - 140px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -156,7 +148,7 @@ nav ul li a:hover::before {
     }
 }
 
-/* Equipos Section */
+/* Equipos */
 .equipos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -164,12 +156,18 @@ nav ul li a:hover::before {
     padding: 20px 0;
 }
 
+/* Estilo base para todos los equipos */
 .equipo {
-    background-color: var(--carbon-black);
     padding: 20px;
+    color: white;
+    background-size: cover;
+    background-position: center;
     border-radius: 10px;
+    margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .equipo:hover {
@@ -177,12 +175,67 @@ nav ul li a:hover::before {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.equipo h3 {
-    color: var(--primary-red);
-    margin-bottom: 10px;
+/* Fondo semitransparente para mejorar la legibilidad */
+.equipo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 1;
 }
 
-/* Calendario Section */
+.equipo h3,
+.equipo p {
+    position: relative;
+    z-index: 2;
+}
+
+/* Estilos específicos para cada equipo (imágenes de fondo) */
+.ferrari {
+    background-image: url('../img/equipos/ferrari.webp');
+}
+
+.mercedes {
+    background-image: url('../img/equipos/mercedes.webp');
+}
+
+.redbull {
+    background-image: url('../img/equipos/redbull.webp');
+}
+
+.mclaren {
+    background-image: url('../img/equipos/mclaren.webp');
+}
+
+.astonmartin {
+    background-image: url('../img/equipos/astonmartin.webp');
+}
+
+.williams {
+    background-image: url('../img/equipos/williams.webp');
+}
+
+.alpine {
+    background-image: url('../img/equipos/alpine.webp');
+}
+
+.sauber {
+    background-image: url('../img/equipos/sauber.webp');
+}
+
+.haas {
+    background-image: url('../img/equipos/haas.webp');
+}
+
+.rb {
+    background-image: url('../img/equipos/rb.webp');
+}
+
+/* Calendario */
 .calendario-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -208,7 +261,7 @@ nav ul li a:hover::before {
     margin-bottom: 10px;
 }
 
-/* Formulario de Contacto */
+/* Contacto */
 form {
     display: flex;
     flex-direction: column;
@@ -220,7 +273,8 @@ form label {
     font-weight: bold;
 }
 
-form input, form select, form textarea {
+form input, form select, form textarea, form option {
+    font-family: "f1", sans-serif;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid var(--gray);
@@ -235,6 +289,7 @@ form input:focus, form select:focus, form textarea:focus {
 }
 
 form button {
+    font-family: "f1", sans-serif;
     background-color: var(--primary-red);
     color: var(--white);
     padding: 10px 20px;
@@ -258,6 +313,7 @@ footer {
     width: 100%;
     bottom: 0;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
 
 footer p {
