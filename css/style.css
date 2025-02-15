@@ -34,6 +34,11 @@ body {
     margin: 0 auto;
 }
 
+.container a {
+    text-decoration: none;
+    color: var(--white);
+}
+
 /* Header */
 header {
     background: linear-gradient(to right, var(--primary-red), #FF5733);
@@ -90,7 +95,7 @@ nav ul li a:hover::before {
     background-size: cover;
     background-position: center;
     text-align: center;
-    padding: 100px 20px;
+    /* padding: 100px 20px; */
     position: relative;
     min-height: calc(100vh - 140px);
     display: flex;
@@ -156,7 +161,6 @@ nav ul li a:hover::before {
     padding: 20px 0;
 }
 
-/* Estilo base para todos los equipos */
 .equipo {
     padding: 20px;
     color: white;
@@ -175,7 +179,6 @@ nav ul li a:hover::before {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* Fondo semitransparente para mejorar la legibilidad */
 .equipo::before {
     content: '';
     position: absolute;
@@ -194,7 +197,6 @@ nav ul li a:hover::before {
     z-index: 2;
 }
 
-/* Estilos específicos para cada equipo (imágenes de fondo) */
 .ferrari {
     background-image: url('../img/equipos/ferrari.webp');
 }
@@ -236,19 +238,17 @@ nav ul li a:hover::before {
 }
 
 /* Calendario */
-.calendario-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-}
-
 .carrera {
-    background-color: var(--carbon-black);
-    padding: 15px;
+    padding: 20px;
+    color: white;
+    background-size: cover;
+    background-position: center;
     border-radius: 10px;
+    margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .carrera:hover {
@@ -256,9 +256,167 @@ nav ul li a:hover::before {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.carrera h3 {
-    color: var(--primary-red);
-    margin-bottom: 10px;
+.carrera::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.carrera h3,
+.carrera p {
+    position: relative;
+    z-index: 2;
+    font-family: "f1", sans-serif;
+    margin: 0;
+}
+
+.carrera-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.melbourne {
+    background-image: url('../img/circuitos/melbourne.webp');
+}
+
+.shangai {
+    background-image: url('../img/circuitos/shangai.webp');
+}
+
+.suzuka {
+    background-image: url('../img/circuitos/suzuka.webp');
+}
+
+.sakhir {
+    background-image: url('../img/circuitos/sakhir.webp');
+}
+
+.jeddah {
+    background-image: url('../img/circuitos/jeddah.webp');
+}
+
+.miami {
+    background-image: url('../img/circuitos/miami.webp');
+}
+
+.imola {
+    background-image: url('../img/circuitos/imola.webp');
+}
+
+.monaco {
+    background-image: url('../img/circuitos/monaco.webp');
+}
+
+.montmelo {
+    background-image: url('../img/circuitos/montmelo.webp');
+}
+
+.gilles-villeneuve {
+    background-image: url('../img/circuitos/gilles-villeneuve.webp');
+}
+
+.red-bull-ring {
+    background-image: url('../img/circuitos/red-bull-ring.webp');
+}
+
+.silverstone {
+    background-image: url('../img/circuitos/silverstone.webp');
+}
+
+.spa-francorchamps {
+    background-image: url('../img/circuitos/spa-francorchamps.webp');
+}
+
+.hungaroring {
+    background-image: url('../img/circuitos/hungaroring.webp');
+}
+
+.zandvoort {
+    background-image: url('../img/circuitos/zandvoort.webp');
+}
+
+.monza {
+    background-image: url('../img/circuitos/monza.webp');
+}
+
+.baku {
+    background-image: url('../img/circuitos/baku.webp');
+}
+
+.marina-bay {
+    background-image: url('../img/circuitos/marina-bay.webp');
+}
+
+.austin {
+    background-image: url('../img/circuitos/austin.webp');
+}
+
+.hermanos-rodriguez {
+    background-image: url('../img/circuitos/hermanos-rodriguez.webp');
+}
+
+.interlagos {
+    background-image: url('../img/circuitos/interlagos.webp');
+}
+
+.lasvegas {
+    background-image: url('../img/circuitos/lasvegas.webp');
+}
+
+.losail {
+    background-image: url('../img/circuitos/losail.webp');
+}
+
+.yas-marina {
+    background-image: url('../img/circuitos/yas-marina.webp');
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    text-align: center;
+    align-content: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox:target {
+    display: block;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 2em;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.close:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 /* Contacto */
