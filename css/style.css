@@ -1,93 +1,294 @@
-/* Estilos base */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+@font-face {
+    font-family: "f1";
+    src: url("/fonts/Formula1-Regular.otf");
+    font-weight: normal;
 }
 
+@font-face {
+    font-family: "f1";
+    src: url("/fonts/Formula1-Bold.otf");
+    font-weight: bold;
+}
+
+/* Estilos generales */
+:root {
+    --primary-red: #FF1E00; /* Rojo Fórmula 1 */
+    --carbon-black: #15151E; /* Negro Fórmula 1 */
+    --white: #FFFFFF;
+    --gray: #888888;
+}
+
+body {
+    font-family: "f1", sans-serif;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    background-color: var(--carbon-black);
+    color: var(--white);
+}
+
+/* Contenedor principal */
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Estilos de la cabecera */
+/* Header */
 header {
-    background: #222;
-    color: white;
+    background: linear-gradient(to right, var(--primary-red), #FF5733);
     padding: 20px 0;
     text-align: center;
+    font-family: "f1";
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
+    color: var(--white);
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.3s, transform 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ffd700;
+    color: var(--gray);
+    transform: translateY(-3px);
 }
 
-/* Sección Hero */
-.hero {
-    background: url('../img/arbitraje.jpg') no-repeat center center/cover;
-    color: white;
+nav ul li a::before {
+    content: "➤";
+    margin-right: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+nav ul li a:hover::before {
+    opacity: 1;
+}
+
+/* Hero Section */
+/* .hero {
+    background-image: url("/img/index.webp");
+    background-size: cover;
+    background-position: center;
     text-align: center;
     padding: 100px 20px;
+    position: relative;
+} */
+.hero {
+    background-image: url("/img/index.webp");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+    min-height: calc(100vh - 140px); /* 100vh - altura del header y footer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .hero h2 {
-    font-size: 2.5rem;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    animation: slideIn 1.5s ease-out;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin: 20px 0;
+    font-size: 1.2em;
+    animation: fadeIn 2s ease-out;
 }
 
-.btn {
+.hero .btn {
     display: inline-block;
-    background: #ffd700;
-    color: #222;
+    background-color: var(--primary-red);
+    color: var(--white);
     padding: 10px 20px;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 1.2em;
     border-radius: 5px;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.btn:hover {
-    background: #e6c200;
+.hero .btn:hover {
+    background-color: var(--gray);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos del footer */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Equipos Section */
+.equipos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.equipo {
+    background-color: var(--carbon-black);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.equipo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.equipo h3 {
+    color: var(--primary-red);
+    margin-bottom: 10px;
+}
+
+/* Calendario Section */
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.carrera {
+    background-color: var(--carbon-black);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carrera:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.carrera h3 {
+    color: var(--primary-red);
+    margin-bottom: 10px;
+}
+
+/* Formulario de Contacto */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input, form select, form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--gray);
+    background-color: var(--carbon-black);
+    color: var(--white);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: var(--primary-red);
+    box-shadow: 0 0 8px rgba(255, 30, 0, 0.5);
+}
+
+form button {
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background-color: var(--gray);
+    transform: scale(1.05);
+}
+
+/* Footer */
 footer {
-    background: #222;
-    color: white;
+    background-color: var(--primary-red);
     text-align: center;
     padding: 10px 0;
-    margin-top: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive */
+footer p {
+    margin: 0;
+}
+
+/* Media Queries para Responsive Design */
 @media (min-width: 768px) {
     .hero h2 {
-        font-size: 3rem;
+        font-size: 3em;
     }
+
     .hero p {
-        font-size: 1.5rem;
+        font-size: 1.5em;
+    }
+
+    .equipos-grid, .calendario-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero h2 {
+        font-size: 4em;
+    }
+
+    .hero p {
+        font-size: 1.8em;
+    }
+
+    .equipos-grid, .calendario-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
